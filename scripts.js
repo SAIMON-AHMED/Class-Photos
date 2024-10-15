@@ -5,22 +5,24 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
   blueShirtHeights.sort((a, b) => a - b);
   
   const len = redShirtHeights.length;
-  const isBigger = redShirtHeights[len - 1] > blueShirtHeights[len - 1];
+  // check if red is taller
+  const isRedTaller = redShirtHeights[len - 1] > blueShirtHeights[len - 1];
   
   // Compare heights of students in both groups based on sorted arrays
-  if (isBigger) {
-    for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
+    
+    if (isRedTaller) {
       if (redShirtHeights[i] <= blueShirtHeights[i]) {
         return false;
       }
-    }
-  } else {
-    for (let i = 0; i < len; i++) {
+    } else {
       if (blueShirtHeights[i] <= redShirtHeights[i]) {
         return false;
       }
     }
+    
   }
   
   return true;
 }
+
